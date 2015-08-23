@@ -1,0 +1,14 @@
+# CONFIGURATION FILE
+# NOTE: Do not leave blank lines. Parameters are written in key value pairs,
+# with a an equal sign in between. Comments can be inserted using #
+# GLOBAL NAMES
+sysdir=E:/rooms
+# CRAWLER PARAMETERS
+flickrAPIkeys=52df479f651659f2f938081769b33d0b, ba38cf95b8bc28ce513957d92c4682e0, 1bafc820bfa1e73dca798916872ed3d1, a1b8f319603d9b94dda4f97945be2674, 41780cd5a3bd2f3c1d9f9a7348321b9e, 3fea4cb13670c4390d6e57284964555a, 02f68b13f6c8b732409460f26631cbb6
+flickrAPIsecrets=d6bdbcacc2ddc007, ded98a7520abab09, 1d43b8e9ed785fad, efcc913fe4ac26d6, 58de2bc012a031f7, 0b42bef79775d346, 14b8baf68ffa88c0
+freebaseAPIKey=AIzaSyD_KwyBN0SW5DnhBzFlyECbIG7fWbsuWI8
+imagesPerDir=10000
+resultsPerPage=1000
+downloadsPerQuery=2000
+numberOfThreads=10
+crawlerBeginTime=1072915200
