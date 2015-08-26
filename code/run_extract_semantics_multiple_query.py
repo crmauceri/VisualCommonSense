@@ -45,65 +45,65 @@ def main():
     if not os.path.exists(concept_dir):
         os.mkdir(concept_dir)
 
-    # concept_file = os.path.join(concept_dir, '{}_owner_per_concept.txt'.format(save_description))
+    concept_file = os.path.join(concept_dir, '{}_owner_per_concept.txt'.format(save_description))
 
-    # from database_builder.get_photo_meta_multiprocess import find_vocabulary
-    # tic()
-    # find_vocabulary(root, stats_dir, query, min_num_images, save_description)
-    # toc()
+    from database_builder.get_photo_meta_multiprocess import find_vocabulary
+    tic()
+    find_vocabulary(root, stats_dir, query, min_num_images, save_description)
+    toc()
 
-    # with open(concept_file, 'r') as f:
-    #     all_concepts = all_concepts = [(x[0], int(float(x[1]))) for x in [t.split('\t') for t in f.read().split('\n')]]
-    #
-    # all_concepts_list,  all_concepts_freq = zip(*all_concepts)
-    # spio.savemat(concept_file[:-3] + 'mat', {'concepts': all_concepts_list})
-    #
-    # #Remove some of the vocabulary fitting certain criteria
-    # filter_vocab_dir = os.path.join(root, 'filter_lists')
-    # all_concepts = filter_vocabulary(filter_vocab_dir, all_concepts)
-    #
+    with open(concept_file, 'r') as f:
+        all_concepts = all_concepts = [(x[0], int(float(x[1]))) for x in [t.split('\t') for t in f.read().split('\n')]]
+
+    all_concepts_list,  all_concepts_freq = zip(*all_concepts)
+    spio.savemat(concept_file[:-3] + 'mat', {'concepts': all_concepts_list})
+
+    #Remove some of the vocabulary fitting certain criteria
+    filter_vocab_dir = os.path.join(root, 'filter_lists')
+    all_concepts = filter_vocabulary(filter_vocab_dir, all_concepts)
+
     save_description = "{}_{}_extended".format(query, min_num_images)
-    # concept_file = os.path.join(concept_dir, '{}_filtered_owner_per_concept.txt'.format(save_description))
-    # with open(concept_file, 'w') as f:
-    #     all_concepts_str = ["{}\t{}".format(t[0], t[1]) for t in all_concepts]
-    #     f.write("\n".join(all_concepts_str))
+    concept_file = os.path.join(concept_dir, '{}_filtered_owner_per_concept.txt'.format(save_description))
+    with open(concept_file, 'w') as f:
+        all_concepts_str = ["{}\t{}".format(t[0], t[1]) for t in all_concepts]
+        f.write("\n".join(all_concepts_str))
 
-    # with open(concept_file, 'r') as f:
-    #     all_concepts = [(x[0], int(float(x[1]))) for x in [t.split('\t') for t in f.read().split('\n')]]
-    #
-    # #Break concatenated word pairs
-    # all_concepts = break_pairs(all_concepts)
-    #
-    # concept_file = os.path.join(concept_dir, '{0}_split_owner_per_concept.txt'.format(save_description))
-    # with open(concept_file, 'w') as f:
-    #     all_concepts_str = ["{}\t{}".format(t[0], t[1]) for t in all_concepts]
-    #     f.write("\n".join(all_concepts_str))
-    #
-    # with open(concept_file, 'r') as f:
-    #     all_concepts = [(x[0], int(float(x[1]))) for x in [t.split('\t') for t in f.read().split('\n')]]
+    with open(concept_file, 'r') as f:
+        all_concepts = [(x[0], int(float(x[1]))) for x in [t.split('\t') for t in f.read().split('\n')]]
+
+    #Break concatenated word pairs
+    all_concepts = break_pairs(all_concepts)
+
+    concept_file = os.path.join(concept_dir, '{0}_split_owner_per_concept.txt'.format(save_description))
+    with open(concept_file, 'w') as f:
+        all_concepts_str = ["{}\t{}".format(t[0], t[1]) for t in all_concepts]
+        f.write("\n".join(all_concepts_str))
+
+    with open(concept_file, 'r') as f:
+        all_concepts = [(x[0], int(float(x[1]))) for x in [t.split('\t') for t in f.read().split('\n')]]
 
     #Find approximate statistics for concept pairs
     #For initial vocabulary expansion
     web_dir = os.path.join(root, 'output')
     if not os.path.exists(web_dir):
         os.mkdir(web_dir)
-    # from database_builder.get_photo_meta_multiprocess import find_approximate_concept_pairs
-    # tic()
-    # find_approximate_concept_pairs(root, stats_dir, query, save_description, all_concepts)
-    # toc()
+    from database_builder.get_photo_meta_multiprocess import find_approximate_concept_pairs
+    tic()
+    find_approximate_concept_pairs(root, stats_dir, query, save_description, all_concepts)
+    toc()
 
-    # # Expand vocabulary
-    # all_concepts = extend_vocabulary(root, stats_dir, knowledge_dir, all_concepts, query, min_num_images, save_description, do_skip)
+    # Expand vocabulary
+    all_concepts = extend_vocabulary(root, stats_dir, knowledge_dir, all_concepts, query, min_num_images, save_description, do_skip)
 
     concept_file = os.path.join(concept_dir, '{}_owner_per_concept.txt'.format(save_description))
-    # with open(concept_file, 'w') as f:
-    #     all_concepts_str = ["{}\t{}".format(t[0], t[1]) for t in all_concepts]
-    #     f.write("\n".join(all_concepts_str))
+    with open(concept_file, 'w') as f:
+        all_concepts_str = ["{}\t{}".format(t[0], t[1]) for t in all_concepts]
+        f.write("\n".join(all_concepts_str))
 
     with open(concept_file, 'r') as f:
         all_concepts = [(x[0], int(float(x[1]))) for x in [t.split('\t') for t in f.read().split('\n')] if len(x)>1]
 
-    # all_concepts = merge_pairs(all_concepts)
+    all_concepts = merge_pairs(all_concepts)
     all_concepts_list, all_concepts_freq = zip(*all_concepts)
 
     spio.savemat(concept_file[:-3] + 'mat', {'concepts': all_concepts_list})

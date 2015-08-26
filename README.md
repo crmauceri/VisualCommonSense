@@ -33,7 +33,7 @@ The next step is to register for API keys for Flickr and Freebase. Insert these 
 ---- Run order ----
 
 1.  python run_download_multiple_query.py <name_of_category or file_path> <max_number_of_images>
-    This file downloads the image metadata from Flickr.
+    This script downloads the image metadata from Flickr.
 
     Parameters:
     <name_of_category> is a string containing a Freebase category, such as, /biology/domesticated_animal. 
@@ -43,7 +43,7 @@ The next step is to register for API keys for Flickr and Freebase. Insert these 
     The image meta data will be saved in <sysdir>/data/texts/
 
 2.  python run_extract_semantics_multiple_query.py <parameters>
-    This file extracts the tags from the image metadata, establishes a vocabulary, and counts co-occurence frequency
+    This script extracts the tags from the image metadata, establishes a vocabulary, and counts co-occurence frequency
 
     Parameters/Flags:
     -q name for the Freebase category. Replace slashes with underscores, e.g. /biology/domesticated_animal becomes biology_domesticated_animal 
@@ -53,9 +53,32 @@ The next step is to register for API keys for Flickr and Freebase. Insert these 
     -r Root directory for image data, usually same as <sysdir>/data/
 
 3. In Matlab: run_analysis( root, search_description, save_description, do_skip, do_approx)
-   This file creates the data structures for the cooccurence and vocabulary representations and cleans up the relationships
+   This function creates the data structures for the cooccurence and vocabulary representations and cleans up the relationships
 
-4. In Matlab: run_
+4. In Matlab: retrieve_relationship_label(root, search_description, model, use_threshold, ...
+    use_merged_relationships, use_feature_difference, min_num_images, min_images_unlabeled, ...
+    min_num_edges, use_approx, save_str)
+   This function creates a CSV file with the properties and classifications of the proposed edges for a dataset, as well as cross-validation on the training edges. The function calls two other functions, run_cross_validation and run_classify_unlabeled which can also be called seperately.
+
+   test_retrieve_multiclass_merged.m is an example of how retrieve_relationship_label can be used
+
+5. In Matlab: run_crosstraining(root, search_description, use_equal_weight, use_diff, ...
+    use_glove, glove_name, use_threshold, use_merged_relations, min_num_images, ...
+    min_num_edges, use_approx, save_str, vocab_train, vocab_test, root_train, root_test, ...
+    search_description_train, search_description_test)
+   This function trains on one dataset and tests on edges from another dataset. 
+
+   test_crosstraining.m is an example of how run_crosstraining can be used
+
+---- Visualization Code ----
+
+display_images_for_pair(dataroot, query, tag1, tag2, postfix, offsets) retrieves a 5x5 grid of images tagged with tag1 and tag2 from the dataset.
+
+---- Validation Code ----
+
+1. Use gen_output_images, or gen_output_images_balanced to preload image grids for a selection of edges from the dataset
+
+2. Use get_truth to label the relationships with a GUI
 
 ---- Credits ----
 
@@ -65,3 +88,4 @@ I also made use of three open source Matlab files from Matlab Central
 prec_rec.m     http://www.mathworks.com/matlabcentral/fileexchange/21528-precision-recall-and-roc-curves/content/prec_rec/prec_rec.m
 cell2csv.m     http://www.mathworks.com/matlabcentral/fileexchange/7601-cell2csv
 JSON.m         http://www.mathworks.com/matlabcentral/fileexchange/42236-parse-json-text/content/JSON.m
+xticklabel_rotate.m http://www.mathworks.com/matlabcentral/fileexchange/3486-xticklabel-rotate
