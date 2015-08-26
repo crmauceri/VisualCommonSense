@@ -1,1 +1,0 @@
-{"nikon d3": 685986, "nikon d50": 541034, "canon eos 5d": 640166, "canon eos 40d": 673869, "nikon d70": 586108, "nikon d60": 830760, "canon eos 400d": 636941, "canon eos 5d mark ii": 823448}
