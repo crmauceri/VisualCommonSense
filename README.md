@@ -10,7 +10,8 @@ If any functions appear to be missing, drop me a line. I tried to clean up the c
 * Freebase is depreciated (since June 31, 2015), so parts of this code may no longer work *
 *******************************************************************************************
 
----- External resources ----
+External resources
+-------------------------------
 
 Install the following python modules before running the code
 
@@ -22,7 +23,8 @@ requests
 Also download the GloVe vector representations from
 http://nlp.stanford.edu/projects/glove/
 
----- Configuration ---
+Configuration 
+--------------------------------------------
 
 Several lines will need to be changed in the config.txt file
 
@@ -30,7 +32,8 @@ Set sysdir to be the directory where you would like to save the output.
 
 The next step is to register for API keys for Flickr and Freebase. Insert these keys in the config.txt file on the appropriate lines.
 
----- Run order ----
+Run order 
+---------------------------------------------
 
 1.  python run_download_multiple_query.py <name_of_category or file_path> <max_number_of_images>
     This script downloads the image metadata from Flickr.
@@ -70,17 +73,20 @@ The next step is to register for API keys for Flickr and Freebase. Insert these 
 
    test_crosstraining.m is an example of how run_crosstraining can be used
 
----- Visualization Code ----
+Visualization Code 
+----------------------------------------------
 
 display_images_for_pair(dataroot, query, tag1, tag2, postfix, offsets) retrieves a 5x5 grid of images tagged with tag1 and tag2 from the dataset.
 
----- Validation Code ----
+Validation Code
+----------------------------------------------
 
 1. Use gen_output_images, or gen_output_images_balanced to preload image grids for a selection of edges from the dataset
 
 2. Use get_truth to label the relationships with a GUI
 
----- Credits ----
+Credits
+-----------------------------------------------
 
 The code for this project has built on several previous efforts. The Flickr download scripts were originially written by Tamara Berg, extended heavily by James Hays, modified by Juan C. Caicedo, and shoehorned for new application by Cecilia Mauceri. The semantics extraction code builds on the Iconic Image project by Hongtao Huang and Yunchao Gong.
 
