@@ -14,10 +14,10 @@ External resources
 
 Install the following python modules before running the code
 
--nltk
--numpy
--scipy
--requests
+- nltk
+- numpy
+- scipy
+- requests
 
 Also download the GloVe vector representations from
 http://nlp.stanford.edu/projects/glove/
@@ -39,8 +39,9 @@ Run order
     This script downloads the image metadata from Flickr.
 
     Parameters:
-    *<name_of_category> is a string containing a Freebase category, such as, /biology/domesticated_animal. 
-    *<max_number_of_images> is the maximum number of images to download for each search term
+    
+    * <name_of_category> is a string containing a Freebase category, such as, /biology/domesticated_animal. 
+    * <max_number_of_images> is the maximum number of images to download for each search term
     
     A list of the search terms will be saved in  <sysdir>/categories/<name_of_category>.txt
     The image meta data will be saved in <sysdir>/data/texts/
@@ -51,11 +52,11 @@ Run order
 
     Parameters/Flags:
     
-    *-q name for the Freebase category. Replace slashes with underscores, e.g. /biology/domesticated_animal becomes biology_domesticated_animal 
-    *-n minimum number of unique image owners to be included in vocabulary 
-    *-k Save path for structured knowledge 
-    *-s Save path for output statistics 
-    *-r Root directory for image data, usually same as <sysdir>/data/
+    * -q name for the Freebase category. Replace slashes with underscores, e.g. /biology/domesticated_animal becomes biology_domesticated_animal 
+    * -n minimum number of unique image owners to be included in vocabulary 
+    * -k Save path for structured knowledge 
+    * -s Save path for output statistics 
+    * -r Root directory for image data, usually same as <sysdir>/data/
 
 3. In Matlab: run_analysis( root, search_description, save_description, do_skip, do_approx)
    
@@ -97,6 +98,8 @@ The code for this project has built on several previous efforts. The Flickr down
 
 I also made use of three open source Matlab files from Matlab Central
 
+|File name|source|
+|------------- | -------------|
 |prec_rec.m|http://www.mathworks.com/matlabcentral/fileexchange/21528-precision-recall-and-roc-curves/content/prec_rec/prec_rec.m|
 |cell2csv.m|http://www.mathworks.com/matlabcentral/fileexchange/7601-cell2csv|
 |JSON.m|http://www.mathworks.com/matlabcentral/fileexchange/42236-parse-json-text/content/JSON.m|
