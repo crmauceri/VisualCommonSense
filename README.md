@@ -6,9 +6,8 @@ This code was tested with Python 2.7.8 (Anaconda) and Matlab R2014b on a Windows
 
 If any functions appear to be missing, drop me a line. I tried to clean up the code base for this distribution and may have accidentally removed something.
 
-*********************************** WARNING ***********************************************
-* Freebase is depreciated (since June 31, 2015), so parts of this code may no longer work *
-*******************************************************************************************
+##** WARNING **
+** Freebase is depreciated (since June 31, 2015), so parts of this code may no longer work **
 
 External resources
 -------------------------------
