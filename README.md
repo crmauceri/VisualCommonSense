@@ -34,19 +34,19 @@ The next step is to register for API keys for Flickr and Freebase. Insert these 
 Run order 
 ---------------------------------------------
 
-1.  python run_download_multiple_query.py &ltname_of_category or file_path&gt &ltmax_number_of_images&gt
+1.  python run_download_multiple_query.py &lt; name_of_category or file_path&gt;  &lt; max_number_of_images&gt; 
     
     This script downloads the image metadata from Flickr.
 
     Parameters:
     
-    * &lt name_of_category&gt is a string containing a Freebase category, such as, /biology/domesticated_animal. 
-    * &lt max_number_of_images&gt is the maximum number of images to download for each search term
+    * &lt;  name_of_category&gt;  is a string containing a Freebase category, such as, /biology/domesticated_animal. 
+    * &lt;  max_number_of_images&gt;  is the maximum number of images to download for each search term
     
-    A list of the search terms will be saved in  &ltsysdir&gt/categories/&ltname_of_category&gt.txt
-    The image meta data will be saved in &ltsysdir&gt/data/texts/
+    A list of the search terms will be saved in  &lt; sysdir&gt; /categories/&lt; name_of_category&gt; .txt
+    The image meta data will be saved in &lt; sysdir&gt; /data/texts/
 
-2.  python run_extract_semantics_multiple_query.py &ltparameters&gt
+2.  python run_extract_semantics_multiple_query.py &lt; parameters&gt; 
     
     This script extracts the tags from the image metadata, establishes a vocabulary, and counts co-occurence frequency
 
@@ -56,7 +56,7 @@ Run order
     * -n minimum number of unique image owners to be included in vocabulary 
     * -k Save path for structured knowledge 
     * -s Save path for output statistics 
-    * -r Root directory for image data, usually same as &ltsysdir&gt/data/
+    * -r Root directory for image data, usually same as &lt; sysdir&gt; /data/
 
 3. In Matlab: run_analysis( root, search_description, save_description, do_skip, do_approx)
    
