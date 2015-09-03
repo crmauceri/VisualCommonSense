@@ -34,19 +34,19 @@ The next step is to register for API keys for Flickr and Freebase. Insert these 
 Run order 
 ---------------------------------------------
 
-1.  python run_download_multiple_query.py <name_of_category or file_path> <max_number_of_images>
+1.  python run_download_multiple_query.py &ltname_of_category or file_path&gt &ltmax_number_of_images&gt
     
     This script downloads the image metadata from Flickr.
 
     Parameters:
     
-    * <name_of_category> is a string containing a Freebase category, such as, /biology/domesticated_animal. 
-    * <max_number_of_images> is the maximum number of images to download for each search term
+    * &lt name_of_category&gt is a string containing a Freebase category, such as, /biology/domesticated_animal. 
+    * &lt max_number_of_images&gt is the maximum number of images to download for each search term
     
-    A list of the search terms will be saved in  <sysdir>/categories/<name_of_category>.txt
-    The image meta data will be saved in <sysdir>/data/texts/
+    A list of the search terms will be saved in  &ltsysdir&gt/categories/&ltname_of_category&gt.txt
+    The image meta data will be saved in &ltsysdir&gt/data/texts/
 
-2.  python run_extract_semantics_multiple_query.py <parameters>
+2.  python run_extract_semantics_multiple_query.py &ltparameters&gt
     
     This script extracts the tags from the image metadata, establishes a vocabulary, and counts co-occurence frequency
 
@@ -56,23 +56,23 @@ Run order
     * -n minimum number of unique image owners to be included in vocabulary 
     * -k Save path for structured knowledge 
     * -s Save path for output statistics 
-    * -r Root directory for image data, usually same as <sysdir>/data/
+    * -r Root directory for image data, usually same as &ltsysdir&gt/data/
 
 3. In Matlab: run_analysis( root, search_description, save_description, do_skip, do_approx)
    
    This function creates the data structures for the cooccurence and vocabulary representations and cleans up the relationships
 
-4. In Matlab: retrieve_relationship_label(root, search_description, model, use_threshold, ...
-    use_merged_relationships, use_feature_difference, min_num_images, min_images_unlabeled, ...
+4. In Matlab: retrieve_relationship_label(root, search_description, model, use_threshold, 
+    use_merged_relationships, use_feature_difference, min_num_images, min_images_unlabeled, 
     min_num_edges, use_approx, save_str)
    
     This function creates a CSV file with the properties and classifications of the proposed edges for a dataset, as well as cross-validation on the training edges. The function calls two other functions, run_cross_validation and run_classify_unlabeled which can also be called seperately.
 
    test_retrieve_multiclass_merged.m is an example of how retrieve_relationship_label can be used
 
-5. In Matlab: run_crosstraining(root, search_description, use_equal_weight, use_diff, ...
-    use_glove, glove_name, use_threshold, use_merged_relations, min_num_images, ...
-    min_num_edges, use_approx, save_str, vocab_train, vocab_test, root_train, root_test, ...
+5. In Matlab: run_crosstraining(root, search_description, use_equal_weight, use_diff, 
+    use_glove, glove_name, use_threshold, use_merged_relations, min_num_images, 
+    min_num_edges, use_approx, save_str, vocab_train, vocab_test, root_train, root_test, 
     search_description_train, search_description_test)
    
    This function trains on one dataset and tests on edges from another dataset. 
